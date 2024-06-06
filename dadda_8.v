@@ -24,14 +24,13 @@ module dadda_8(A,B,y);
 // generating partial products 
 genvar i;
 genvar j;
-
-for(i = 0; i<8; i=i+1)begin
-
-   for(j = 0; j<8;j = j+1)begin
+generate
+for(i = 0; i<8; i=i+1)begin : gen_pp_loop
+   for(j = 0; j<8;j = j+1)begin: gen_pp_loop2
       assign gen_pp[i][j] = A[j]*B[i];
 end
 end
-
+endgenerate
  
 
 //Reduction by stages.
